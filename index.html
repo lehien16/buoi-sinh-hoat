@@ -770,6 +770,91 @@
             top: 100px;
             animation: bounce 2s infinite;
         }
+
+        .countdown-timer {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 18px 25px;
+            border-radius: 50px;
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.4);
+            border: 4px solid #FFB6C1;
+            font-family: 'Baloo 2', cursive;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #FF1493;
+            backdrop-filter: blur(10px);
+            z-index: 1002;
+            animation: bounceIn 0.8s ease-out;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .countdown-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: conic-gradient(#FF69B4 0deg, #FFB6C1 0deg);
+            position: relative;
+            animation: countdownRotate 15s linear forwards;
+        }
+
+        .countdown-circle::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .countdown-circle::after {
+            content: '⏰';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.8rem;
+        }
+
+        @keyframes countdownRotate {
+            from { background: conic-gradient(#FF69B4 360deg, #FFB6C1 0deg); }
+            to   { background: conic-gradient(#FF69B4 0deg, #FFB6C1 360deg); }
+        }
+
+        .countdown-text {
+            animation: pulse 1s infinite;
+            text-shadow: 0 0 20px rgba(255,20,147,0.6);
+        }
+
+        .countdown-warning {
+            color: #FF4500 !important;
+            animation: heartbeat 0.6s infinite !important;
+        }
+
+        #playButton:active {
+            transform: scale(0.95);
+        }
+
+        .play-button-initial {
+            font-size: 1rem; 
+            padding: 5px 22px; 
+            background: linear-gradient(45deg, #FF1493, #FF69B4); 
+            box-shadow: 0 20px 50px rgba(255,20,147,0.5); 
+            position: relative; 
+            left: 800px;
+        }
+
+        #playButton.counting {
+            position: relative;
+            bottom: -225px;
+            left: 340px;
+        }
+
+        #thinkingMessage {
+            animation: pulse 1.5s infinite;
+        }
     </style>
     <body>
         <div class="floating-elements">
@@ -889,54 +974,6 @@
                     <button class="btn" onclick="resetGame(); goToSlide(1)" style="font-size: 1.5rem; padding: 10px 40px; position: relative; top: 100px;">🔄 Chơi lại từ đầu</button>
                 </div>
             </div>
-
-            <div class="slide" id="slide5">
-                <div class="floating-candy" style="top:5%;left:5%;font-size:4rem;animation-delay:0s;">🌸</div>
-                <div class="floating-candy" style="top:10%;right:10%;font-size:3.5rem;animation-delay:0.5s;">🌹</div>
-                <div class="floating-candy" style="bottom:15%;left:8%;font-size:4.2rem;animation-delay:1s;">💐</div>
-                <div class="floating-candy" style="top:30%;right:5%;font-size:3.8rem;animation-delay:1.2s;">🌺</div>
-                <div class="floating-candy" style="bottom:25%;right:15%;font-size:4rem;animation-delay:0.8s;">🌷</div>
-                <div class="floating-candy" style="top:55%;left:90%;font-size:3.5rem;animation-delay:2s;">✨</div>
-                <div class="floating-candy" style="top:70%;left:10%;font-size:4.5rem;animation-delay:1.8s;">💖</div>
-                <div class="floating-candy" style="bottom:5%;left:50%;font-size:5rem;animation-delay:2.5s;">🎀</div>
-                <div style="animation: bounceIn 2s ease-out; text-align: center; margin-bottom: 2rem;">
-                    <h1 class="title" style="font-size: 5rem; position: relative; top: 30px;">
-                        CHÚC MỪNG NGÀY 20-11 🎉
-                    </h1>
-                    <p style="font-size:2rem; color:#FF1493; font-weight:700; margin:20px 0; animation:fadeInUp 2s ease-out 0.8s both; text-shadow:0 4px 20px rgba(255,20,147,0.4); position: relative; top: -10px;">
-                        ✧ NGÀY NHÀ GIÁO VIỆT NAM ✧
-                    </p>
-                </div>
-
-                <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-                    <p style="font-family: 'Quicksand', sans-serif; font-size: 1rem; color: black; line-height: 1.8; margin: 1.5rem 0; animation:fadeInUp 2s ease-out 0.8s both; position: relative; top: -90px;">
-                        ❤️ Chúng em kính chúc cô luôn có thật nhiều sức khỏe, hạnh phúc và mãi là ngọn lửa soi đường cho chúng em trên hành trình tri thức! ❤️
-                    </p>
-                </div>
-
-                <div style="text-align:center; margin:4vh auto 6vh; animation:bounceIn 2s 1.2s both; position: relative; top: -100px;">
-                    <div style="display:inline-block; position:relative;">
-                        <!-- Viền gradient xoay nhẹ -->
-                        <div style="
-                            position:absolute; inset:-15px; border-radius:50%;
-                            background:conic-gradient(#FF69B4,#FFB6C1,#DDA0DD,#87CEEB,#FF69B4);
-                            animation:spin 12s linear infinite; opacity:0.8; z-index:1;
-                        "></div>
-                        
-                        <!-- Khung ảnh tròn chính -->
-                        <div style="
-                            width:320px; height:320px; border-radius:50%; overflow:hidden;
-                            border:12px solid white;
-                            box-shadow:0 20px 60px rgba(255,105,180,0.5), 0 0 0 8px #FFB6C1;
-                            position:relative; z-index:2;
-                        ">
-                            <img src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/523530507_24190654773957290_4115068781837822766_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iT8tzAOwO50Q7kNvwG1TPf-&_nc_oc=AdnDYl960YyziDGg4H5vXTfx-CxiyH_ihoZixSscqZfBHSLHD4zJ_E--oywxh9_q0dY&_nc_zt=23&_nc_ht=scontent.fdad3-4.fna&_nc_gid=vPK1E5o3Mq82y7_sErq29w&oh=00_Afhr2QtGlRrh-u2EcM4ilLzi_bAUxdcmKS9_ig7jdV4n4Q&oe=69218BD7" 
-                                alt="Cô giáo yêu quý" 
-                                style="width:100%; height:100%; object-fit:cover;">
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="navigation">
@@ -956,11 +993,28 @@
                 <div class="floating-emoji" style="top: 40%; left: 90%; animation-delay: 1.8s;">💖</div>
             </div>
             <div class="question-card">
+                <div id="playSection" style="text-align:center;">
+                    <button id="playButton" class="btn play-button-initial">
+                        ▶️
+                    </button>
+
+                    <div class="countdown-timer" id="countdownTimer" style="display:none; margin: 30px auto; justify-content:center;">
+                        <div class="countdown-circle" id="countdownCircle"></div>
+                        <div class="countdown-text" id="countdownText">15</div>
+                    </div>
+
+                    <div id="thinkingMessage" style="display:none; margin-top: 20px; font-size: 1.8rem; color: #FF69B4; font-weight: 700;">
+                        Đang suy nghĩ... ⏳
+                    </div>
+                </div>
+
                 <p class="question-text" id="questionText"></p>
-                <input type="text" class="answer-input" id="answerInput" placeholder="Nhập câu trả lời của em...">
-                <div class="question-buttons" id="questionButtons">
-                    <button class="btn btn-correct" onclick="checkAnswer()">✅ Kiểm tra đáp án</button>
-                    <button class="btn btn-close" onclick="closeQuestion()">🔙 Thoát câu hỏi</button>
+                <div id="answerSection">
+                    <input type="text" class="answer-input" id="answerInput" placeholder="Nhập câu trả lời của em...">
+                    <div class="question-buttons" id="questionButtons">
+                        <button class="btn btn-correct" onclick="checkAnswer()">✅ Kiểm tra đáp án</button>
+                        <button class="btn btn-close" onclick="closeQuestion()">🔙 Thoát câu hỏi</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -969,7 +1023,7 @@
 
         <script>
             let currentSlide = 1; 
-            const totalSlides = 5; 
+            const totalSlides = 4; 
             let currentTutorialStep = 0;
             const totalTutorialSteps = 4;
             let openedCandies = new Set(); 
@@ -1120,35 +1174,6 @@
                 }, 1200);
             }
 
-            function showQuestion(question) {
-                document.getElementById('questionText').innerHTML = `
-                    <div style="font-size: 1.2rem; color: #FF69B4; margin-bottom: 15px; font-weight: 600;">${currentQuestion.category}</div>
-                    <div>${question}</div>
-                `;
-                
-                const answerInput = document.getElementById('answerInput');
-                answerInput.value = '';
-                answerInput.style.display = currentQuestion.type === 'challenge' ? 'none' : 'block';
-                
-                const buttonsContainer = document.getElementById('questionButtons');
-                if (currentQuestion.type === 'challenge') {
-                    buttonsContainer.innerHTML = `
-                        <button class="btn btn-challenge" onclick="closeQuestionAsCorrect()">🎉 Hoàn thành thử thách</button>
-                        <button class="btn btn-close" onclick="closeQuestion()">🔙 Thoát câu hỏi</button>
-                    `;
-                } else {
-                    buttonsContainer.innerHTML = `
-                        <button class="btn btn-correct" onclick="checkAnswer()">✅ Kiểm tra đáp án</button>
-                        <button class="btn btn-close" onclick="closeQuestion()">🔙 Thoát câu hỏi</button>
-                    `;
-                }
-                
-                document.getElementById('questionModal').style.display = 'flex'; 
-                if (currentQuestion.type !== 'challenge') {
-                    document.getElementById('answerInput').focus(); 
-                }
-            }
-
             function checkAnswer() {
                 const userAnswer = document.getElementById('answerInput').value.trim();
 
@@ -1194,6 +1219,7 @@
             }
 
             function correctAnswer() {
+                stopCountdown();
                 openedCandies.add(currentCandyNumber);
 
                 showSoundEffect('👏🎉');
@@ -1209,6 +1235,7 @@
             }
 
             function wrongAnswer() {
+                stopCountdown();
                 showSoundEffect('🚨❌');
                 playSound(wrongSound);
 
@@ -1233,9 +1260,12 @@
                     <div style="font-size: 1.1rem; line-height: 1.5;">${currentQuestion.question}</div>
                 `;
                 paperNote.classList.add('show');
+                resetToPlayAgain();
             }
 
             function closeQuestion() {
+                stopCountdown();
+                resetToPlayAgain();
                 document.getElementById('questionModal').style.display = 'none'; 
 
                 if (currentCandyNumber) {
@@ -1475,6 +1505,125 @@
                             openCandy(candyNumber);
                             document.getElementById(`candy-${candyNumber}`).focus();
                         }
+                    }
+                }
+            });
+
+            let countdownInterval = null;
+            let countdownTime = 15;
+            let isTimerRunning = false;
+            let skipRequested = false;
+
+            function showQuestion(question) {
+                document.getElementById('questionText').innerHTML = `
+                    <div style="font-size: 1.2rem; color: #FF69B4; margin-bottom: 15px; font-weight: 600;">${currentQuestion.category}</div>
+                    <div>${question}</div>
+                `;
+
+                const answerSection = document.getElementById('answerSection');
+                const answerInput = document.getElementById('answerInput');
+                const buttonsContainer = document.getElementById('questionButtons');
+
+                if (currentQuestion.type === 'challenge') {
+                    answerInput.style.display = 'none';
+                    buttonsContainer.innerHTML = `
+                        <button class="btn btn-challenge" onclick="closeQuestionAsCorrect()">Hoàn thành thử thách</button>
+                        <button class="btn btn-close" onclick="closeQuestion()">Thoát</button>
+                    `;
+                } else {
+                    answerInput.style.display = 'block';
+                    buttonsContainer.innerHTML = `
+                        <button class="btn btn-correct" onclick="checkAnswer()">Kiểm tra đáp án</button>
+                        <button class="btn btn-close" onclick="closeQuestion()">Thoát câu hỏi</button>
+                    `;
+                }
+
+                document.getElementById('questionModal').style.display = 'flex';
+                resetToPlayAgain();
+            }
+
+            document.getElementById('playButton').onclick = function() {
+                if (isTimerRunning) {
+                    skipCountdown();
+                } else {
+                    startCountdown();
+                }
+            };
+
+            function resetToPlayAgain() {
+                stopCountdown();
+                skipRequested = false;
+                document.getElementById('playButton').textContent = '▶️';
+                document.getElementById('playButton').classList.remove('counting');
+                document.getElementById('playButton').style.display = 'block';
+                document.getElementById('countdownTimer').style.display = 'none';
+                document.getElementById('thinkingMessage').style.display = 'none';
+                document.getElementById('answerSection').style.display = 'none';
+                document.getElementById('answerInput').value = '';
+            }
+
+            function startCountdown() {
+                if (isTimerRunning) return;
+                isTimerRunning = true;
+                skipRequested = false;
+
+                document.getElementById('playButton').textContent = '⏩ Bỏ qua 15s';
+                document.getElementById('playButton').classList.add('counting');
+                document.getElementById('playButton').style.display = 'block';
+                document.getElementById('countdownTimer').style.display = 'flex';
+                document.getElementById('thinkingMessage').style.display = 'block';
+                document.getElementById('answerSection').style.display = 'none';
+
+                countdownTime = 15;
+                document.getElementById('countdownText').textContent = '15';
+                document.getElementById('countdownText').classList.remove('countdown-warning');
+
+                const circle = document.getElementById('countdownCircle');
+                circle.style.animation = 'none';
+                circle.offsetHeight;
+                circle.style.animation = 'countdownRotate 15s linear forwards';
+
+                countdownInterval = setInterval(() => {
+                    countdownTime--;
+                    document.getElementById('countdownText').textContent = countdownTime;
+
+                    if (countdownTime <= 5) {
+                        document.getElementById('countdownText').classList.add('countdown-warning');
+                    }
+                    if (countdownTime <= 0 || skipRequested) {
+                        clearInterval(countdownInterval);
+                        countdownInterval = null;
+                        isTimerRunning = false;
+                        skipRequested = false;
+
+                        document.getElementById('countdownTimer').style.display = 'none';
+                        document.getElementById('thinkingMessage').style.display = 'none';
+                        document.getElementById('answerSection').style.display = 'block';
+                        document.getElementById('playButton').style.display = 'none';
+                        document.getElementById('answerInput').focus();
+                    }
+                }, 1000);
+            }
+
+            function skipCountdown() {
+                if (!isTimerRunning) return;
+                skipRequested = true;
+            }
+
+            function stopCountdown() {
+                if (countdownInterval) {
+                    clearInterval(countdownInterval);
+                    countdownInterval = null;
+                }
+                isTimerRunning = false;
+                skipRequested = false;
+            }
+
+            document.addEventListener('keydown', function(e) {
+                if (document.getElementById('questionModal').style.display === 'flex') {
+                    if (e.key === 'Enter' && isTimerRunning) {
+                        e.preventDefault();
+                        skipCountdown();
                     }
                 }
             });
